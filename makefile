@@ -4,4 +4,6 @@ compile : dirinfo.c
 run : 
 	./dirinfo
 
-
+check : dirinfo
+	gcc -g dirinfo.c
+	gdb ./a.out
