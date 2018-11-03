@@ -7,3 +7,6 @@ run :
 check : dirinfo
 	gcc -g dirinfo.c
 	gdb ./a.out
+
+clean :
+	rm ./dirinfo ./a.out 
