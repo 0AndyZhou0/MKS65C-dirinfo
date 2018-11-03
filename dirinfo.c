@@ -16,6 +16,13 @@ int main(){
   }
   struct dirent *file;
   while(file = readdir(d)){
+    if(file -> d_type == 4){
+      printf("Directory: ");
+    }else if(file -> d_type == 8){
+      printf("File: ");
+    }else{
+      printf("%d: ",file -> d_type);
+    }
     printf("%s\n",file -> d_name);
   }
   closedir(d);
