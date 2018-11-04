@@ -6,10 +6,13 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <errno.h>
+#include <string.h>
 
 int main(){
   DIR *d;
-  if(d = opendir("../MKS65C-dirinfo/")){
+  char directory[100] ="../MKS65C-dirinfo/";
+  int total;
+  if(d = opendir(directory)){
     printf("owo\n");
   }else{
     printf("%d\n",errno);
@@ -18,13 +21,23 @@ int main(){
   while(file = readdir(d)){
     if(file -> d_type == 4){
       printf("Directory: ");
-    }else if(file -> d_type == 8){
+	  printf("%s\n",file -> d_name);
+	}else if(file -> d_type == 8){
       printf("File: ");
+	  printf("%s\n",file -> d_name);
+	  char dummy[100];
+	  strcpy(dummy,directory);
+	  strcat(dummy,file->d_name);
+	  struct stat stuff;
+      stat(dummy,&stuff);
+      printf("File size:%d\n",stuff.st_size);
+	  total+=stuff.st_size;
     }else{
       printf("%d: ",file -> d_type);
+	  printf("%s\n",file -> d_name);
     }
-    printf("%s\n",file -> d_name);
   }
   closedir(d);
+  printf("Total File Size: %d\n",total);
   return 0;
 }
