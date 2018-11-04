@@ -38,6 +38,6 @@ int main(){
     }
   }
   closedir(d);
-  printf("Total File Size: %d\n",total);
+  printf("Total File Size: %d bytes\n",total);
   return 0;
 }
