@@ -26,12 +26,10 @@ int main(int argc, char *dir[]){
   DIR *d;
   char directory[100];
   //char directory[100] ="../MKS65C-dirinfo/";
-  if(dir){
-    scanf("%s", &directory);
-  }else{
+  if(argc != 1){
     printf("Plz Enter Directory Path\n");
-    scanf("%s", &directory);
   }
+  scanf("%s", &directory);
   int total;
   if(d = opendir(directory)){
     printf("owo\n");
