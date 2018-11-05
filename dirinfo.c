@@ -11,10 +11,10 @@
 void printSize(int size){
   printf("File Size: ");
   if(size % 1073741824 / 10000000 > 0){
-    printf("%d GB ",size % 1073741824 / 10000000);
+    printf("%d MB ",size % 1073741824 / 10000000);
   }
   if(size % 1048576 / 1000 > 0){
-    printf("%d MB ",size % 1048576 / 1000);
+    printf("%d KB ",size % 1048576 / 1000);
   }
   if(size % 1024 > 0){
     printf("%d B",size % 1024);
@@ -22,14 +22,21 @@ void printSize(int size){
   printf("\n");
 }
 
-int main(){
+int main(int argc, char *dir[]){
   DIR *d;
-  char directory[100] ="../MKS65C-dirinfo/";
+  char directory[100];
+  //char directory[100] ="../MKS65C-dirinfo/";
+  if(dir){
+    scanf("%s", &directory);
+  }else{
+    printf("Plz Enter Directory Path\n");
+    scanf("%s", &directory);
+  }
   int total;
   if(d = opendir(directory)){
     printf("owo\n");
   }else{
-    printf("%d\n",errno);
+    printf("Whoops %d\n",errno);
   }
   struct dirent *file;
   while(file = readdir(d)){
@@ -54,10 +61,10 @@ int main(){
   closedir(d);
   printf("Total File Size: ");
   if(total % 1073741824 / 10000000 > 0){
-    printf("%d GB ",total % 1073741824 / 10000000);
+    printf("%d MB ",total % 1073741824 / 10000000);
   }
   if(total % 1048576 / 1000 > 0){
-    printf("%d MB ",total % 1048576 / 1000);
+    printf("%d KB ",total % 1048576 / 1000);
   }
   if(total % 1024 > 0){
     printf("%d B",total % 1024);
