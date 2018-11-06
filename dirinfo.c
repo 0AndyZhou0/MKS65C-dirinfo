@@ -27,9 +27,11 @@ int main(int argc, char *dir[]){
   char directory[100];
   //char directory[100] ="../MKS65C-dirinfo/";
   if(argc != 1){
-    printf("Plz Enter Directory Path\n");
+    strcpy(directory, dir[1]);
+  }else{
+	printf("Plz Enter Directory Path\n");
+	scanf("%s", &directory);
   }
-  scanf("%s", &directory);
   int total;
   if(d = opendir(directory)){
     printf("owo\n");
@@ -59,8 +61,8 @@ int main(int argc, char *dir[]){
   closedir(d);
   printf("Total File Size: ");
   if(total % 1073741824 / 10000000 > 0){
-    printf("%d MB ",total % 1073741824 / 10000000);
   }
+    printf("%d MB ",total % 1073741824 / 10000000);
   if(total % 1048576 / 1000 > 0){
     printf("%d KB ",total % 1048576 / 1000);
   }
