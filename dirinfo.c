@@ -29,15 +29,16 @@ int main(int argc, char *dir[]){
   if(argc != 1){
     strcpy(directory, dir[1]);
   }else{
-	printf("Plz Enter Directory Path\n");
-	scanf("%s", &directory);
+    printf("Plz Enter Directory Path\n");
+    scanf("%s", &directory);
+  }
+  if(d = opendir(directory)){
+    //printf("owo\n");
+  }else{
+    printf("Error %d : Invalid Directory Path\n",errno);
+    _exit(0);
   }
   int total;
-  if(d = opendir(directory)){
-    printf("owo\n");
-  }else{
-    printf("Whoops %d\n",errno);
-  }
   struct dirent *file;
   while(file = readdir(d)){
     if(file -> d_type == 4){
